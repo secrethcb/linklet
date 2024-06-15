@@ -90,10 +90,11 @@ export async function onRequest(context) {
 
             // slug 已存在
             if (existUrl) {
-                return Response.json({ message: 'Slug already exists.' },{
-                    headers: corsHeaders,
-                    status: 200  
-                })
+		        const info = await env.DB.prepare(`UPDATE links SET url = '${url}', ip = '${clientIP}', status = '1', ua='${userAgent}', create_time='${formattedDate}', WHERE slug = '${slug}'`).run()
+		        return Response.json({ slug: slug, link: `${origin}/${slug}` },{
+		            headers: corsHeaders,
+		            status: 200
+		        })
             }
         }
 
