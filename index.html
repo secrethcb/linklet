@@ -203,10 +203,10 @@
     </style>
   </head>
   <body>
-    <header><h1>短链生成器</h1></header>
+    <header><h1><br/><br/></h1></header>
     <main x-data="app" x-cloak>
       <p x-show.transition.opacity="alert" :class="alert?.type" x-text="alert?.message"></p>
-      <input placeholder="输入要缩短的网址..." x-model="url" x-ref="url" />
+      <input placeholder="输入..." x-model="url" x-ref="url" />
       <details>
         <summary>自定义设置</summary>
         <div>
@@ -217,7 +217,6 @@
       <button :class="{ loading }" :disabled="loading || isValidated()" @click="submit($refs, $nextTick)">生成</button>
     </main>
     <footer>
-      基于 <a href="https://github.com/harrisonwang/linklet" target="_blank">Cloudflare</a> 的短链生成器
     </footer>
     <script src="asset/js/alpine.js"></script>
     <script>
